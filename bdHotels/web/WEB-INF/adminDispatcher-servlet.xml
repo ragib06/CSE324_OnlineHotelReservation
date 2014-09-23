@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+    
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+    
+    <!--
+    Most controllers will use the ControllerClassNameHandlerMapping above, but
+    for the index controller we are using ParameterizableViewController, so we must
+    define an explicit mapping for it.
+    -->
+
+    <bean id="staticPagesController" class="org.springframework.web.servlet.mvc.UrlFilenameViewController"/>
+
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="index.adm">staticPagesController</prop>
+                <prop key="home.adm">staticPagesController</prop>
+                <prop key="login.adm">adminLoginController</prop>
+                <prop key="logout.adm">adminLogoutController</prop>
+                <prop key="addhotel.adm">addHotelController</prop>
+                <prop key="showhotels.adm">showHotelsController</prop>
+                <prop key="showhotelinfo.adm">showHotelInfoController</prop>
+                <prop key="showhotelbranches.adm">showHotelBranchesController</prop>
+<!--                <prop key="showhotelbranchespecificinfo.adm">showHotelBranchSpecificInfoController</prop>-->
+                <prop key="showcustomerinfo.adm">showCustomerInfoController</prop>
+                <prop key="showcustomerSpecificinfo.adm">showCustomerSpecificInfoController</prop>
+
+                <prop key="showadvertiserequest.adm">showAdvertiseRequestController</prop>
+                <prop key="showtravelguiderequest.adm">showTravelGuideRequestController</prop>
+                <prop key="processrequest.adm">processRequestController</prop>
+                <prop key="showadvertisetravelguide.adm">showAdvertTravelguideController</prop>
+            </props>
+        </property>
+    </bean>
+
+	<!--The View Resolver-->
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/jsp/admin/"
+          p:suffix=".jsp" />
+
+	<!--The Controllers-->
+    <bean name="indexController"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="index" />
+
+    <bean name="adminLoginController"
+	  class="controller.admin.AdminLoginController"
+	  p:adminLoginService-ref="adminLoginService" />
+
+
+    <bean name="adminLogoutController"
+	  class="controller.admin.AdminLogoutController" />
+
+    <bean name="addHotelController"
+	  class="controller.admin.AddHotelController"
+	  p:addHotelService-ref="addHotelService" />
+
+    <bean name="showHotelsController"
+	  class="controller.admin.ShowHotelsController"
+	  p:showHotelsService-ref="showHotelsService"
+          p:viewName="showhotels" />
+          
+    <bean name="showHotelInfoController"
+	  class="controller.admin.ShowHotelInfoController"
+	  p:showHotelsService-ref="showHotelInfoService"
+          p:viewName="showhotelinfo" />
+
+     <bean name="showHotelBranchesController"
+	  class="controller.admin.ShowHotelBranchesController"
+	  p:showHotelBranchesService-ref="showHotelBranchesService"
+          p:viewName="showhotelbranches" />
+
+     <bean name="showHotelBranchSpecificInfoController"
+	  class="controller.hotel.ShowHotelBranchSpecificInfoController"
+	  p:showHotelBranchSpecificInfoService-ref="showHotelBranchSpecificInfoService"
+          p:viewName="showhotelbranchspecificinfo" />
+
+      <bean name="showCustomerInfoController"
+	  class="controller.admin.ShowCustomerInfoController"
+	  p:showCustomerInfoService-ref="showCustomerInfoService"
+          p:viewName="showcustomerinfo" />
+
+      <bean name="showCustomerSpecificInfoController"
+	  class="controller.admin.ShowCustomerSpecificInfoController"
+	  p:showCustomerInfoService-ref="showCustomerInfoService"
+          p:viewName="showcustomerinfo" />
+
+     
+      <bean name="showAdvertiseRequestController"
+	  class="controller.admin.ShowAdvertiseRequestController"
+	  p:showAdvertiseRequestService-ref="showAdvertiseRequestService"
+          p:viewName="showadvertiserequest" />
+
+      <bean name="showTravelGuideRequestController"
+	  class="controller.admin.ShowTravelGuideRequestController"
+	  p:showTravelGuideRequestService-ref="showTravelGuideRequestService"
+          p:viewName="showtravelguiderequest" />
+
+      <bean name="processRequestController"
+	  class="controller.admin.ProcessRequestController"/>
+
+      <bean name="showAdvertTravelguideController"
+	  class="controller.admin.ShowAdvertTravelguideController"/>
+
+</beans>
+

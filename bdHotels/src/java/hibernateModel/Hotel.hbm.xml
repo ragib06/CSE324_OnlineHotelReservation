@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 22, 2010 1:02:22 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="online_hotel_reservation" name="hibernateModel.Hotel" table="hotel">
+    <id name="hotelId" type="java.lang.Integer">
+      <column name="hotelId"/>
+      <generator class="identity"/>
+    </id>
+    <property name="name" type="string">
+      <column length="50" name="name" not-null="true"/>
+    </property>
+    <property name="username" type="string">
+      <column length="30" name="username" not-null="true"/>
+    </property>
+    <property name="password" type="string">
+      <column length="30" name="password" not-null="true"/>
+    </property>
+    <property name="ipaddress" type="string">
+      <column length="15" name="ipaddress" not-null="true"/>
+    </property>
+    <property name="contextPath" type="string">
+      <column length="30" name="contextPath" not-null="true"/>
+    </property>
+    <property name="port" type="string">
+      <column length="5" name="port" not-null="true"/>
+    </property>
+    <set inverse="true" name="travelguides">
+      <key>
+        <column name="hotelId" not-null="true"/>
+      </key>
+      <one-to-many class="hibernateModel.Travelguide"/>
+    </set>
+    <set inverse="true" name="offerses">
+      <key>
+        <column name="hotelId" not-null="true"/>
+      </key>
+      <one-to-many class="hibernateModel.Offers"/>
+    </set>
+    <set inverse="true" name="advertisementses">
+      <key>
+        <column name="hotelId" not-null="true"/>
+      </key>
+      <one-to-many class="hibernateModel.Advertisements"/>
+    </set>
+    <set inverse="true" name="hotelReviews">
+      <key>
+        <column name="hotelId"/>
+      </key>
+      <one-to-many class="hibernateModel.HotelReview"/>
+    </set>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+<!--        user-->
+	<bean name="regService" class="service.user.RegistrationService" />
+	<bean name="searchBookingService" class="service.user.SearchBookingService" />
+        <bean name="roomBookService" class="service.user.RoomBookService" />
+        <bean name="userLoginService" class="service.user.UserLoginService" />
+        <bean name="addReviewService" class="service.user.AddReviewService" />
+
+<!--        admin-->
+        <bean name="adminLoginService" class="service.admin.AdminLoginService" />
+        <bean name="addHotelService" class="service.admin.AddHotelService" />
+        <bean name="showHotelsService" class="service.admin.ShowHotelsService" />
+        <bean name="showHotelInfoService" class="service.admin.ShowHotelInfoService" />
+        <bean name="showCustomerInfoService" class="service.admin.ShowCustomerInfoService" />
+        <bean name="showAdvertiseRequestService" class="service.admin.ShowAdvertiseRequestService" />
+        <bean name="showTravelGuideRequestService" class="service.admin.ShowTravelGuideRequestService" />
+        <bean name="showHotelBranchesService" class="service.admin.ShowHotelBranchesService" />
+
+<!--        hotel-->
+        <bean name="showHotelBranchSpecificInfoService" class="service.hotel.ShowHotelBranchSpecificInfoService" />
+        <bean name="hotelLoginService" class="service.hotel.HotelLoginService" />
+        <bean name="addHotelBranchService" class="service.hotel.AddHotelBranchService" />
+        <bean name="addTravelGuideService" class="service.hotel.AddTravelGuideService" />
+        <bean name="addHotelOfferService" class="service.hotel.AddHotelOfferService" />
+        <bean name="addAdvertiseService" class="service.hotel.AddAdvertiseService" />
+        
+<!--        branch-->
+        
+
+        <bean id="multipartResolver"
+            class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+
+            <!-- one of the properties available; the maximum file size in bytes -->
+            <property name="maxUploadSize" value="100000"/>
+        </bean>
+        
+    <!--bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+          p:location="/WEB-INF/jdbc.properties" />
+    
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+          p:driverClassName="${jdbc.driverClassName}"
+          p:url="${jdbc.url}"
+          p:username="${jdbc.username}"
+          p:password="${jdbc.password}" /-->
+    
+    <!-- ADD PERSISTENCE SUPPORT HERE (jpa, hibernate, etc) -->
+
+    
+</beans>

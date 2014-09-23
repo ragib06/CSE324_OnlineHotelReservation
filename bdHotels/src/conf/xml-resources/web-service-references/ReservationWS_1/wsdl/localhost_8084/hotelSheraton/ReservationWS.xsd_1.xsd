@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-740-. --><xs:schema xmlns:tns="http://reservation.services.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://reservation.services.org/">
+
+<xs:element name="GiveBooking" type="tns:GiveBooking" />
+
+<xs:element name="GiveBookingResponse" type="tns:GiveBookingResponse" />
+
+<xs:element name="searchBranch" type="tns:searchBranch" />
+
+<xs:element name="searchBranchResponse" type="tns:searchBranchResponse" />
+
+<xs:element name="serachForRoom" type="tns:serachForRoom" />
+
+<xs:element name="serachForRoomResponse" type="tns:serachForRoomResponse" />
+
+<xs:complexType name="serachForRoom">
+<xs:sequence>
+<xs:element name="location" type="xs:string" minOccurs="0" />
+<xs:element name="noOfDays" type="xs:int" />
+<xs:element name="checkInDate" type="xs:string" minOccurs="0" />
+<xs:element name="noOfBeds" type="xs:int" />
+<xs:element name="floorNo" type="xs:int" />
+<xs:element name="sideView" type="xs:string" minOccurs="0" />
+<xs:element name="price" type="xs:double" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="serachForRoomResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="GiveBooking">
+<xs:sequence>
+<xs:element name="branch_id" type="xs:int" />
+<xs:element name="roomId" type="xs:int" />
+<xs:element name="customerId" type="xs:int" />
+<xs:element name="check_in_date" type="xs:string" minOccurs="0" />
+<xs:element name="check_out_date" type="xs:string" minOccurs="0" />
+<xs:element name="advance" type="xs:double" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="GiveBookingResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="searchBranch">
+<xs:sequence>
+<xs:element name="hotelId" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="searchBranchResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

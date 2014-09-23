@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/online_hotel_reservation</property>
+    <property name="hibernate.connection.username">bdhotels</property>
+    <property name="hibernate.connection.password">bdhotels</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <mapping resource="hibernateModel/Customer.hbm.xml"/>
+    <mapping resource="hibernateModel/Travelguide.hbm.xml"/>
+    <mapping resource="hibernateModel/Hotel.hbm.xml"/>
+    <mapping resource="hibernateModel/HotelReview.hbm.xml"/>
+    <mapping resource="hibernateModel/Advertisements.hbm.xml"/>
+    <mapping resource="hibernateModel/Offers.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

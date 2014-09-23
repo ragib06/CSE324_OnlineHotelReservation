@@ -1,0 +1,190 @@
+mysql --user=bdhotels -p
+bdhotels
+use online_hotel_reservation
+
+
+
+drop table hotel_review;
+drop table travelGuide;
+drop table Offers;
+drop table Advertisements;
+drop table hotel;
+drop table customer_telephone;
+drop table customer_mobile;
+drop table customer;
+
+
+
+
+create table customer
+(
+	customerId int not null AUTO_INCREMENT,
+	first_name varchar(20) not null, 
+	middle_name varchar(20),
+	last_name varchar(20) not null,
+	apartmentNo int not null,
+	streetNo int not null,
+	streetName varchar(40) not null,
+	city varchar(20) not null,
+	district varchar(20) not null,
+	division varchar(20) not null,
+	areaCode int not null,
+	email varchar(35),
+	alternateEmail varchar(35),
+	username varchar(30) not null,
+	password varchar (30) not null,
+	primary key(customerId),
+	check(apartment_no>= 0),
+	check(street_no>= 0),
+	check(areaCode>= 0)
+)ENGINE=INNODB;
+
+insert into customer (first_name,middle_name,last_name,apartmentNo,streetNo,streetName,city,district,division,
+areaCode,email,alternateEmail,username,password) values ('shubhra','kanti','karmaker',18,2,'Haji ismail Road','khulna','khulna','khulna',4,
+'kanti_shubhra@yahoo.com','drtcp_drtcp@yahoo.com','santu','sunrise');
+
+
+create table customer_mobile
+(
+	customerId int not null,
+	mobile_no varchar(15),
+	INDEX customer_ind (customerId),
+	primary key(mobile_no),
+	foreign key (customerId) references customer(customerId) on delete cascade
+)ENGINE=INNODB;
+insert into customer_mobile (customerId,mobile_no) values (1,'01718019966');
+insert into customer_mobile (customerId,mobile_no) values (1,'01191415264');
+insert into customer_mobile (customerId,mobile_no) values (1,'01711229993');
+
+
+
+create table customer_telephone
+(
+	customerId int not null,
+	telephone_no varchar(15),
+	INDEX customer_ind (customerId),
+	primary key(telephone_no),
+	foreign key (customerId) references customer(customerId) on delete cascade
+)ENGINE=INNODB;
+insert into customer_telephone (customerId,telephone_no) values (1,'041723693');
+insert into customer_telephone (customerId,telephone_no) values (1,'041732082');
+
+
+
+create table hotel
+(
+	hotelId int not null AUTO_INCREMENT,
+	name varchar(50) not null,
+	username varchar(30) not null,
+	password varchar (30) not null,
+	ipaddress varchar(15) not null,
+	contextPath varchar(30) not null,
+	port varchar(5) not null,
+	INDEX hotel_ind (hotelId),
+	primary key(hotelId)
+)ENGINE=INNODB;
+
+insert into hotel (name,username,password, ipaddress, port,contextPath) values ('Santamaria','santa','maria', 'localhost', '8084','hotelSantamaria');
+insert into hotel (name,username,password, ipaddress, port,contextPath) values ('Sheraton','shera','ton', 'localhost', '8084','hotelSheraton');
+
+
+
+create table Advertisements
+(
+	hotelId int not null,
+	AdvertisementId int not null AUTO_INCREMENT,
+	title varchar(50) not null,
+	text varchar(1000) not null,
+	pictureUrl varchar(100),
+	INDEX hotel_ind (hotelId),
+ 	primary key(AdvertisementId),
+	foreign key (hotelId) references hotel(hotelId) on delete cascade
+)ENGINE=INNODB;
+
+
+insert into Advertisements (hotelId,title,text) values (1,'enjoy your summer in santamaria','enjoy'); 
+
+
+
+create table Offers
+(
+	hotelId int not null,
+	offerId int not null AUTO_INCREMENT,
+	title varchar(50) not null,
+	text varchar(1000) not null,
+	price double not null,
+	INDEX hotel_ind (hotelId),
+ 	primary key(offerId),
+	foreign key (hotelId) references hotel(hotelId) on delete cascade,
+	check(price>= 0)
+)ENGINE=INNODB;
+
+insert into Offers (hotelId,title,text,price) values (1,'50% off','enjoy 50% off',1000.80); 
+
+
+
+create table travelGuide
+(
+	hotelId int not null,
+	travelGuideId int not null AUTO_INCREMENT,
+	title varchar(50) not null,
+	text varchar(1000) not null,
+	pictureUrl varchar(100),
+	INDEX hotel_ind (hotelId),
+ 	primary key(travelGuideId),
+	foreign key (hotelId) references hotel(hotelId) on delete cascade
+)ENGINE=INNODB;
+
+
+insert into travelGuide (hotelId,title,text) values (1,'roam in coxs bazar','1. enjoy your summer in santamaria 2. go to sea'); 
+
+
+
+
+
+
+
+create table hotel_review
+(
+	hotelId int,
+	customerId int,
+	reviewId int not null AUTO_INCREMENT,
+	reviewDate date not null,
+	text varchar(1000) not null,
+	INDEX hotel_ind (hotelId),
+	INDEX customer_ind (customerId),
+	primary key(reviewId),
+	foreign key (hotelId) references hotel(hotelId) on delete cascade,
+	foreign key (customerId) references customer(customerId) on delete cascade
+)ENGINE=INNODB;
+
+
+insert into hotel_review (hotelId,customerId,reviewDate,text) values (1,1,curdate(),'valo');
+
+
+
+
+
+
+
+
+
+
+select * from customer;
+select * from customer_mobile;
+select * from customer_telephone;
+select * from hotel;
+select * from Advertisements;
+select * from Offers;
+select * from travelGuide;
+select * from hotel_review;
+
+
+
+
+insert into hotel (name,username,password, ipaddress, port,contextPath) values ('Santamaria','santa','maria', '10.8.12.180', '8084','hotelSantamaria');
+insert into hotel (name,username,password, ipaddress, port,contextPath) values ('Raddison','raddi','son', 'localhost', '8084','hotelRaddison');
+insert into hotel (name,username,password, ipaddress, port,contextPath) values ('Shonargaon','shonar','gaon','localhost', '8084','hotelShonargaon'); 
+
+
+

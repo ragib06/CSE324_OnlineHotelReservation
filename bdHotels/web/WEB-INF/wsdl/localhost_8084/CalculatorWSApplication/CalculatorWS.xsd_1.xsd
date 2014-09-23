@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-740-. --><xs:schema xmlns:tns="http://calculator.me.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://calculator.me.org/">
+
+<xs:element name="booking" type="tns:booking" />
+
+<xs:element name="bookingResponse" type="tns:bookingResponse" />
+
+<xs:complexType name="booking">
+<xs:sequence>
+<xs:element name="roomId" type="xs:int" />
+<xs:element name="customerId" type="xs:int" />
+<xs:element name="no_of_days" type="xs:int" />
+<xs:element name="check_in_date" type="xs:string" minOccurs="0" />
+<xs:element name="advance" type="xs:double" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="bookingResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

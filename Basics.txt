@@ -1,0 +1,50 @@
+DROP USER 'bdhotels'@'localhost';
+CREATE USER 'bdhotels'@'localhost' IDENTIFIED BY 'bdhotels';
+SELECT User, Host, Password FROM mysql.user;
+GRANT ALL PRIVILEGES ON *.* TO 'bdhotels'@'localhost' WITH GRANT OPTION;
+SHOW GRANTS FOR 'bdhotels'@'localhost';
+SELECT USER()
+
+
+DROP USER 'santamaria'@'localhost';
+CREATE USER 'santamaria'@'localhost' IDENTIFIED BY 'Omeca256';
+SELECT User, Host, Password FROM mysql.user;
+GRANT ALL PRIVILEGES ON *.* TO 'santamaria'@'localhost' WITH GRANT OPTION;
+SHOW GRANTS FOR 'santamaria'@'localhost';
+SELECT USER()
+
+
+DROP USER 'sheraton'@'localhost';
+CREATE USER 'sheraton'@'localhost' IDENTIFIED BY 'Omeca256';
+SELECT User, Host, Password FROM mysql.user;
+GRANT ALL PRIVILEGES ON *.* TO 'sheraton'@'localhost' WITH GRANT OPTION;
+SHOW GRANTS FOR 'sheraton'@'localhost';
+SELECT USER()
+
+
+
+DROP USER 'shonargaon'@'localhost';
+CREATE USER 'shonargaon'@'localhost' IDENTIFIED BY 'Omeca256';
+SELECT User, Host, Password FROM mysql.user;
+GRANT ALL PRIVILEGES ON *.* TO 'shonargaon'@'localhost' WITH GRANT OPTION;
+SHOW GRANTS FOR 'shonargaon'@'localhost';
+SELECT USER()
+
+
+
+
+DROP USER 'raddison'@'localhost';
+CREATE USER 'raddison'@'localhost' IDENTIFIED BY 'Omeca256';
+SELECT User, Host, Password FROM mysql.user;
+GRANT ALL PRIVILEGES ON *.* TO 'raddison'@'localhost' WITH GRANT OPTION;
+SHOW GRANTS FOR 'raddison'@'localhost';
+SELECT USER()
+
+
+drop database online_hotel_reservation;
+drop database hotelSantamaria;
+drop database hotelSheraton;
+
+create database online_hotel_reservation;
+create database hotelSantamaria;
+create database hotelSheraton;

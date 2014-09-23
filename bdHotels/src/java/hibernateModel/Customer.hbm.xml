@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 22, 2010 1:02:22 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="online_hotel_reservation" name="hibernateModel.Customer" table="customer">
+    <id name="customerId" type="java.lang.Integer">
+      <column name="customerId"/>
+      <generator class="identity"/>
+    </id>
+    <property name="firstName" type="string">
+      <column length="20" name="first_name" not-null="true"/>
+    </property>
+    <property name="middleName" type="string">
+      <column length="20" name="middle_name"/>
+    </property>
+    <property name="lastName" type="string">
+      <column length="20" name="last_name" not-null="true"/>
+    </property>
+    <property name="apartmentNo" type="int">
+      <column name="apartmentNo" not-null="true"/>
+    </property>
+    <property name="streetNo" type="int">
+      <column name="streetNo" not-null="true"/>
+    </property>
+    <property name="streetName" type="string">
+      <column length="40" name="streetName" not-null="true"/>
+    </property>
+    <property name="city" type="string">
+      <column length="20" name="city" not-null="true"/>
+    </property>
+    <property name="district" type="string">
+      <column length="20" name="district" not-null="true"/>
+    </property>
+    <property name="division" type="string">
+      <column length="20" name="division" not-null="true"/>
+    </property>
+    <property name="areaCode" type="int">
+      <column name="areaCode" not-null="true"/>
+    </property>
+    <property name="email" type="string">
+      <column length="35" name="email"/>
+    </property>
+    <property name="alternateEmail" type="string">
+      <column length="35" name="alternateEmail"/>
+    </property>
+    <property name="username" type="string">
+      <column length="30" name="username" not-null="true"/>
+    </property>
+    <property name="password" type="string">
+      <column length="30" name="password" not-null="true"/>
+    </property>
+    <property name="mobileNo" type="string">
+      <column length="15" name="mobile_no"/>
+    </property>
+    <property name="telephoneNo" type="string">
+      <column length="15" name="telephone_no"/>
+    </property>
+    <set inverse="true" name="hotelReviews">
+      <key>
+        <column name="customerId"/>
+      </key>
+      <one-to-many class="hibernateModel.HotelReview"/>
+    </set>
+  </class>
+</hibernate-mapping>

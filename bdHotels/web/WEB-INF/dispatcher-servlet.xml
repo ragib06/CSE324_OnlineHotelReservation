@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+    
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+    
+    <!--
+    Most controllers will use the ControllerClassNameHandlerMapping above, but
+    for the index controller we are using ParameterizableViewController, so we must
+    define an explicit mapping for it.
+    -->
+
+    <bean id="staticPagesController" class="org.springframework.web.servlet.mvc.UrlFilenameViewController"/>
+
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="index.htm">indexController</prop>
+                <prop key="search_booking.htm">searchBookingController</prop>
+                <prop key="roombook.htm">roomBookController</prop>
+                <prop key="registration1.htm">staticPagesController</prop>
+                <prop key="registrationStep1.htm">regController1</prop>
+                <prop key="registrationStep2.htm">regController2</prop>
+                <prop key="registrationStep3.htm">regController3</prop>
+                <prop key="registrationStep4.htm">regController4</prop>
+                <prop key="registrationStep5.htm">regController5</prop>
+                <prop key="registrationStep1Back.htm">regControllerBack1</prop>
+                <prop key="registrationStep2Back.htm">regControllerBack2</prop>
+                <prop key="registrationStep3Back.htm">regControllerBack3</prop>
+                <prop key="registrationStep4Back.htm">regControllerBack4</prop>
+                <prop key="edit.htm">editInfoController</prop>
+                <prop key="login.htm">staticPagesController</prop>
+                <prop key="logout.htm">userLogoutController</prop>
+                <prop key="home.htm">staticPagesController</prop>
+                <prop key="doLogin.htm">userLoginController</prop>
+                <prop key="showhotels.htm">showHotelsController</prop>
+                <prop key="showhotelinfo.htm">showHotelInfoController</prop>
+                <prop key="showhotelbranches.htm">showHotelBranchesController</prop>
+                <prop key="addreview.htm">addReviewController</prop>
+                <prop key="advancesearch.htm">staticPagesController</prop>
+                <prop key="advance_search_booking.htm">advancedSearchBookingController</prop>
+            </props>
+        </property>
+    </bean>
+
+
+	<!--The View Resolver-->
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/jsp/user/"
+          p:suffix=".jsp" />
+
+
+	<!--The Controllers-->
+    <bean name="indexController"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="index" />
+
+    <bean name="searchBookingController"
+	  class="controller.user.SearchBookingController"
+	  p:searchBookingService-ref="searchBookingService"/>
+
+    <bean name="advancedSearchBookingController"
+	  class="controller.user.AdvancedSearchBookingController"
+	  p:searchBookingService-ref="searchBookingService"/>
+
+    <bean name="roomBookController"
+	  class="controller.user.RoomBookController"
+          p:roomBookService-ref="roomBookService"/>
+
+    <bean name="regController1"
+	  class="controller.user.RegistrationController1"
+	  p:registrationService-ref="regService" />
+
+    <bean name="regController2"
+	  class="controller.user.RegistrationController2"
+	  p:registrationService-ref="regService" />
+
+    <bean name="regController3"
+	  class="controller.user.RegistrationController3"
+	  p:registrationService-ref="regService" />
+
+    <bean name="regController4"
+	  class="controller.user.RegistrationController4"
+	  p:registrationService-ref="regService" />
+
+     <bean name="regController5"
+	  class="controller.user.RegistrationController5"
+	  p:registrationService-ref="regService" />
+
+    <bean name="regControllerBack1"
+	  class="controller.user.RegistrationControllerBack1"
+	  p:registrationService-ref="regService" />
+
+    <bean name="regControllerBack2"
+	  class="controller.user.RegistrationControllerBack2"
+	  p:registrationService-ref="regService" />
+
+    <bean name="regControllerBack3"
+	  class="controller.user.RegistrationControllerBack3"
+	  p:registrationService-ref="regService" />
+
+
+    <bean name="regControllerBack4"
+	  class="controller.user.RegistrationControllerBack4"
+	  p:registrationService-ref="regService" />
+
+     <bean name="editInfoController"
+	  class="controller.user.EditInfoController"/>
+
+
+    <bean name="userLoginController"
+	  class="controller.user.UserLoginController"
+	  p:userLoginService-ref="userLoginService" />
+
+    <bean name="userLogoutController"
+	  class="controller.user.UserLogoutController"/>
+
+    <bean name="showHotelsController"
+	  class="controller.admin.ShowHotelsController"
+	  p:showHotelsService-ref="showHotelsService"
+          p:viewName="showhotels" />
+
+    <bean name="showHotelInfoController"
+	  class="controller.user.ShowHotelInfoController"
+	  p:showHotelsService-ref="showHotelInfoService"
+          p:viewName="showhotelinfo" />
+
+    <bean name="showHotelBranchesController"
+	  class="controller.user.ShowHotelBranchesController"
+	  p:showHotelBranchesService-ref="showHotelBranchesService"
+          p:viewName="showhotelbranches" />
+
+    <bean name="addReviewController"
+	  class="controller.user.AddReviewController"
+          p:addReviewService-ref="addReviewService" />
+
+</beans>
+

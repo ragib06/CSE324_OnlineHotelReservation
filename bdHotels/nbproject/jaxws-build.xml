@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+        *** GENERATED FROM jax-ws.xml - DO NOT EDIT !                             ***
+        *** TO MODIFY wsimport options USE Web Service node -> Edit WS Attributes ***
+        *** TO CHANGE TARGETS GENERATED TO jaxws-build.xml COPY THOSE             ***
+        *** TARGETS TO ../build.xml AND MODIFY THAT FILE INSTEAD                  ***
+
+        -->
+<project xmlns:xalan="http://xml.apache.org/xslt" xmlns:webproject2="http://www.netbeans.org/ns/web-project/2" xmlns:jaxws="http://www.netbeans.org/ns/jax-ws/1">
+    <!--
+                ===================
+                JAX-WS WSGEN SECTION
+                ===================
+            -->
+    <!--
+                ===================
+                JAX-WS WSIMPORT SECTION
+                ===================
+            -->
+    <target name="wsimport-init" depends="init">
+        <mkdir dir="${build.generated.sources.dir}/jax-ws"/>
+        <taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport">
+            <classpath path="${java.home}/../lib/tools.jar:${j2ee.platform.wsimport.classpath}:${javac.classpath}"/>
+        </taskdef>
+        <condition property="conf-dir" value="${conf.dir}/" else="">
+            <isset property="conf.dir"/>
+        </condition>
+    </target>
+    <target name="wsimport-client-ReservationWS" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/ReservationWS"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/ReservationWS" destdir="${build.generated.dir}/jax-wsCache/ReservationWS" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/ReservationWS/wsdl/localhost_8084/hotelSantamaria/ReservationWS.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://localhost:8084/hotelSantamaria/ReservationWS?wsdl" xnocompile="true" xendorsed="true" target="2.1">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/ReservationWS/wsdl/localhost_8084/hotelSantamaria/ReservationWS.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/ReservationWS"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/ReservationWS">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-ReservationWS" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/org/services/reservation"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/ReservationWS"/>
+    </target>
+    <target name="wsimport-client-ReservationWS_1" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/ReservationWS_1"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/ReservationWS_1" destdir="${build.generated.dir}/jax-wsCache/ReservationWS_1" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/ReservationWS_1/wsdl/localhost_8084/hotelSheraton/ReservationWS.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://localhost:8084/hotelSheraton/ReservationWS?wsdl" xnocompile="true" xendorsed="true" target="2.1">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/ReservationWS_1/wsdl/localhost_8084/hotelSheraton/ReservationWS.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/ReservationWS_1"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/ReservationWS_1">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-ReservationWS_1" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/org/services/reservation"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/ReservationWS_1"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-ReservationWS, wsimport-client-ReservationWS_1"/>
+</project>

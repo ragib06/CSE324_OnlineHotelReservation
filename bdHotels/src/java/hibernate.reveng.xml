@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="online_hotel_reservation"/>
+  <table-filter match-name="customer"/>
+  <table-filter match-name="hotel"/>
+  <table-filter match-name="travelguide"/>
+  <table-filter match-name="advertisements"/>
+  <table-filter match-name="hotel_review"/>
+  <table-filter match-name="offers"/>
+</hibernate-reverse-engineering>
